@@ -7,7 +7,7 @@ describe Group do
 
   it { expect(group.name).to eq 'My group' }
   it { expect(group.students.count).to eq capacity }
-  it { expect(group.stidents.first).to be_a(Student) }
+  it { expect(group.students.first).to be_a(Student) }
 
   describe '#info' do
     let(:capacity) { 3 }
@@ -21,7 +21,7 @@ describe Group do
     it 'returns group name and students list' do
       expect(group.info).to eq <<-TEXT
       Group name: "My group"
-      
+
       Students:
       - Alan
       - Bob
