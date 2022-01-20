@@ -18,14 +18,10 @@ class Group
   end
 
   def info
-    @name = "      Group name: \"#{@name}\"\n\n"
-    list = "#{@name}"
+    list = "      Group name: \"#{@name}\"\n\n"
     list += "      Students:\n"
-    i = 2
-    while i > -1
-      list += "      - #{@students[i].name}\n"
-      i -= 1
-    end
-    return list
+    @students.sort! { |a, b|  a.name <=> b.name }
+    .each { |student| list += "      - #{student.name}\n" }
+    list
   end
 end
