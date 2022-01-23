@@ -29,4 +29,54 @@ describe Group do
       TEXT
     end
   end
+
+  describe '#search' do
+    let(:kris) { Student.new('Kris', 'Albarn', 18) }
+    let(:bob) { Student.new('Bob', 'Dilan', 19) }
+    let(:alan_wake) { Student.new('Alan', 'Wake', 20) }
+    let(:alan_rosbeef) { Student.new('Alan', 'Rosbeef', 20) }
+
+    before { group.students = [kris, alan_wake, bob, alan_rosbeef] }
+
+    context 'when search by name or surname' do
+      it 'when search matches by name' do
+        expect(group.search('Ala')).to eq [alan_rosbeef, alan_wake]
+      end
+
+      it 'when search matches by name & surname' do
+        expect(group.search('Al')).to eq [alan_rosbeef, alan_wake, kris]
+      end
+    end
+
+    context 'when search by full name' do
+      it 'returns list of matched students' do
+        expect(group.search('Alan W')).to eq [alan_wake]
+      end
+    end
+  end
+
+  describe '#find' do
+    let(:kris) { Student.new('Kris', 'Albarn', 18) }
+    let(:bob) { Student.new('Bob', 'Dilan', 19) }
+    let(:alan_wake) { Student.new('Alan', 'Wake', 20) }
+    let(:alan_rosbeef) { Student.new('Alan', 'Rosbeef', 20) }
+
+    before { group.students = [kris, alan_wake, bob, alan_rosbeef] }
+
+    context 'when find by name or surname' do
+      it 'when search matches by name' do
+        expect(group.search('Ala')).to eq alan_rosbeef
+      end
+
+      it 'when find matches by name & surname' do
+        expect(group.search('Al')).to eq alan_rosbeef
+      end
+    end
+
+    context 'when find by full name' do
+      it 'returns list of matched students' do
+        expect(group.search('Alan W')).to eq alan_wake
+      end
+    end
+  end
 end
