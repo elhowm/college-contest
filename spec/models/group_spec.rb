@@ -65,17 +65,17 @@ describe Group do
 
     context 'when find by name or surname' do
       it 'when search matches by name' do
-        expect(group.search('Ala')).to eq alan_rosbeef
+        expect(group.find('Ala')).to eq alan_rosbeef
       end
 
       it 'when find matches by name & surname' do
-        expect(group.search('Al')).to eq alan_rosbeef
+        expect(group.find('Al')).to eq alan_rosbeef
       end
     end
 
     context 'when find by full name' do
       it 'returns list of matched students' do
-        expect(group.search('Alan W')).to eq alan_wake
+        expect(group.find('Alan W')).to eq alan_wake
       end
     end
   end
