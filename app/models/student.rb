@@ -8,4 +8,8 @@ class Student
     @surname = surname
     @age = age
   end
+
+  def full_name(students)
+    students.sort_by { |student| [student.name, student.surname] }
+  end
 end
