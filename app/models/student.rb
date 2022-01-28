@@ -9,7 +9,7 @@ class Student
     @age = age
   end
 
-  def full_name(students)
-    students.sort_by { |student| [student.name, student.surname] }
+  def full_name
+    "#{name} #{surname}"
   end
 end
