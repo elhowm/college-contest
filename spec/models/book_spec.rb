@@ -7,7 +7,7 @@ describe Book do
 
   let(:id) { SecureRandom.uuid }
   let(:subject) { 'Math' }
-  let(:text) { Faker::Name.name }
+  let(:text) { Faker::Lorem.paragraph }
 
   it { expect(book.id).to eq id }
   it { expect(book.subject).to eq subject }
