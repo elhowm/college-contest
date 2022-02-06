@@ -31,10 +31,10 @@ describe Group do
   end
 
   describe '#search' do
-    let(:kris) { Student.new('Kris', 'Albarn', 18) }
-    let(:bob) { Student.new('Bob', 'Dilan', 19) }
-    let(:alan_wake) { Student.new('Alan', 'Wake', 20) }
-    let(:alan_rosbeef) { Student.new('Alan', 'Rosbeef', 20) }
+    let(:kris) { Student.new('Kris', 'Albarn', 18, []) }
+    let(:bob) { Student.new('Bob', 'Dilan', 19, []) }
+    let(:alan_wake) { Student.new('Alan', 'Wake', 20, []) }
+    let(:alan_rosbeef) { Student.new('Alan', 'Rosbeef', 20, []) }
 
     before { group.students = [kris, alan_wake, bob, alan_rosbeef] }
 
@@ -56,10 +56,10 @@ describe Group do
   end
 
   describe '#find' do
-    let(:kris) { Student.new('Kris', 'Albarn', 18) }
-    let(:bob) { Student.new('Bob', 'Dilan', 19) }
-    let(:alan_wake) { Student.new('Alan', 'Wake', 20) }
-    let(:alan_rosbeef) { Student.new('Alan', 'Rosbeef', 20) }
+    let(:kris) { Student.new('Kris', 'Albarn', 18, []) }
+    let(:bob) { Student.new('Bob', 'Dilan', 19, []) }
+    let(:alan_wake) { Student.new('Alan', 'Wake', 20, []) }
+    let(:alan_rosbeef) { Student.new('Alan', 'Rosbeef', 20, []) }
 
     before { group.students = [kris, alan_wake, bob, alan_rosbeef] }
 

@@ -12,7 +12,8 @@ class Group
       name = "name #{number}"
       surname = "surname #{number}"
       age = rand(17..24)
-      student = Student.new(name, surname, age)
+      memory = []
+      student = Student.new(name, surname, age, memory)
       @students.push(student)
     end
   end

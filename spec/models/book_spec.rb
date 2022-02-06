@@ -1,6 +1,5 @@
 require 'app_helper'
-require 'securerandom'
-require 'faker'
+require 'models/student_spec'
 
 describe Book do
   subject(:book) { Book.new(id, subject, text) }
