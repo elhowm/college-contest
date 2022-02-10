@@ -1,4 +1,5 @@
 require 'app_helper'
+require 'models/student_spec'
 
 describe Wallet do
   let(:wallet) { Wallet.new(300) }

@@ -2,24 +2,26 @@ require 'app_helper'
 require 'models/group_spec'
 
 describe Student do
-  subject(:student) { Student.new(name, surname, age, memory) }
+  subject(:student) { Student.new(name, surname, age, memory, wallet) }
 
   let(:name) { 'John' }
   let(:surname) { 'Dou' }
   let(:age) { rand(100) }
   let(:memory) { [] }
+  let(:wallet) { nil }
 
   it { expect(student.name).to eq name }
   it { expect(student.surname).to eq surname }
   it { expect(student.age).to eq age }
   it { expect(student.memory).to eq memory }
+  it { expect(student.wallet).to eq wallet }
 
 
   describe '#full_name' do
-    let(:kris) { Student.new('Kris', 'Albarn', 18, []) }
-    let(:bob) { Student.new('Bob', 'Dilan', 19, []) }
-    let(:alan_wake) { Student.new('Alan', 'Wake', 20, []) }
-    let(:alan_rosbeef) { Student.new('Alan', 'Rosbeef', 20, []) }
+    let(:kris) { Student.new('Kris', 'Albarn', 18, [], nil) }
+    let(:bob) { Student.new('Bob', 'Dilan', 19, [], nil) }
+    let(:alan_wake) { Student.new('Alan', 'Wake', 20, [], nil) }
+    let(:alan_rosbeef) { Student.new('Alan', 'Rosbeef', 20, [], nil) }
 
     it 'returns full name' do
       expect(kris.full_name).to eq 'Kris Albarn'
@@ -32,7 +34,7 @@ describe Student do
   let(:book1) { Book.new(SecureRandom.uuid, 'Math',    Faker::Lorem.paragraph) }
   let(:book2) { Book.new(SecureRandom.uuid, 'Physics', Faker::Lorem.paragraph) }
   let(:book3) { Book.new(SecureRandom.uuid, 'Biology', Faker::Lorem.paragraph) }
-  let(:carl) { Student.new('Carl', 'Brooks', 18, []) }
+  let(:carl) { Student.new('Carl', 'Brooks', 18, [], Wallet.new(0)) }
 
   describe '#read_book' do
     it 'add book to memory' do
@@ -70,6 +72,14 @@ describe Student do
 
     it "returns book that student doesn't know" do
       expect(carl.examinate(book3.text[0..10])).to eq nil
+    end
+  end
+
+  describe '#wallet' do
+    it "returns student's wallet" do
+      expect(carl.wallet.balance).to eq 0
+      carl.wallet.top_up(150)
+      expect(carl.wallet.balance).to eq 150
     end
   end
 end

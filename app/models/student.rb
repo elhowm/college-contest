@@ -4,13 +4,15 @@ class Student
   attr_accessor :name,
                 :surname,
                 :age,
-                :memory
+                :memory,
+                :wallet
 
-  def initialize(name, surname, age, memory)
+  def initialize(name, surname, age, memory, wallet)
     @name = name
     @surname = surname
     @age = age
     @memory = memory
+    @wallet = wallet
   end
 
   def full_name
